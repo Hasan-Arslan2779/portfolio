@@ -1,15 +1,15 @@
 import Footer from "@/components/Footer";
 import { getGitHubProjects } from "@/lib/github";
 
-type Project = {
+export type Project = {
   name: string;
   description: string;
-  html_url: string;
   language: string;
+  html_url: string;
 };
 
 export default async function Home() {
-  const projects: Project = await getGitHubProjects("Hasan-Arslan2779"); // GitHub kullanıcı adı
+  const projects: Project[] = await getGitHubProjects("Hasan-Arslan2779");
 
   return (
     <main className="flex flex-col items-center px-4 py-12 space-y-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-900 dark:to-black">
@@ -41,7 +41,7 @@ export default async function Home() {
           Projeler
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, 10).map((project) => (
+          {projects.slice(0, 10).map((project: Project) => (
             <div
               key={project.name}
               className="p-6 bg-white dark:bg-gray-900 rounded-lg shadow-xl transform transition-transform hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-blue-400 hover:to-teal-400"

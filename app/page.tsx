@@ -9,7 +9,7 @@ type Project = {
 };
 
 export default async function Home() {
-  const projects = await getGitHubProjects("Hasan-Arslan2779"); // GitHub kullanıcı adı
+  const projects: Project = await getGitHubProjects("Hasan-Arslan2779"); // GitHub kullanıcı adı
 
   return (
     <main className="flex flex-col items-center px-4 py-12 space-y-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-900 dark:to-black">
